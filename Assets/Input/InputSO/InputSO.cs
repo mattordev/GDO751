@@ -9,6 +9,7 @@ namespace AstralCandle.Input{
     /// </summary>
 
     public abstract class InputSO : ScriptableObject{
+        [SerializeField] bool forceHideCursor = false;
         [SerializeField] InputActionAsset asset;
         [SerializeField] protected Action[] _actions;
 
@@ -49,7 +50,8 @@ namespace AstralCandle.Input{
 
         void Run(InputAction.CallbackContext ctx){
             UsingGamepad = Gamepad.current?.wasUpdatedThisFrame == true;        
-            Cursor.visible = !UsingGamepad;
+            Cursor.visible = !(UsingGamepad || forceHideCursor);
+            Cursor.lockState = Cursor.visible? CursorLockMode.None : CursorLockMode.Locked;
             ActionManager(ctx);
         }
         

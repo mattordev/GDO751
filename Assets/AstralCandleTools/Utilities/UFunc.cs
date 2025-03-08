@@ -70,6 +70,26 @@ namespace AstralCandle.Utilities{
             return directions;
         }
         
+        public static Quaternion SmoothDampRotation(Quaternion current, Quaternion target, ref Quaternion currentAngularVelocity, float smoothTime, float? speed = null, float? deltaTime = null){
+            float s = speed ?? Mathf.Infinity;
+            float delta = deltaTime ?? Time.deltaTime;
+
+            if(Quaternion.Dot(current, target) < 0){ target = new(-target.x, -target.y, -target.z, -target.w); }
+            static Vector4 Convert(Quaternion v) => new(v.x, v.y, v.z, v.w);
+            Vector4 curVec = Convert(current);
+            Vector4 trgtVec = Convert(target);
+            Vector4 velocity = Convert(currentAngularVelocity);
+
+            curVec.x = Mathf.SmoothDamp(curVec.x, trgtVec.x, ref velocity.x, smoothTime, s, delta);
+            curVec.y = Mathf.SmoothDamp(curVec.y, trgtVec.y, ref velocity.y, smoothTime, s, delta);
+            curVec.z = Mathf.SmoothDamp(curVec.z, trgtVec.z, ref velocity.z, smoothTime, s, delta);
+            curVec.w = Mathf.SmoothDamp(curVec.w, trgtVec.w, ref velocity.w, smoothTime, s, delta);
+
+            currentAngularVelocity = new(velocity.x, velocity.y, velocity.z, velocity.w);
+
+
+            return new Quaternion(curVec.x, curVec.y, curVec.z, curVec.w).normalized;
+        }
 
         /// <summary>
         /// Remaps an input value from the fromMin to fromMax range and converts it and maps it to a new set of values between toMin and toMax

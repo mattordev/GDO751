@@ -1,11 +1,8 @@
 {
-    "name": "Input",
+    "name": "Planets",
     "rootNamespace": "",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:19322e94d4f35384bb90a54a2d2a4773",
-        "GUID:f274c70bd36e55b479630ddf05beeb69",
-        "GUID:ad00d3a9d57be7d41ba1686e663a90ad"
+        "GUID:19322e94d4f35384bb90a54a2d2a4773"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
