@@ -15,12 +15,6 @@ public class RegionTracker : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     /// <summary>
     /// OnTriggerEnter is called when the Collider other enters the trigger.
     /// </summary>
@@ -44,7 +38,11 @@ public class RegionTracker : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     void OnTriggerExit(Collider other)
     {
-        // doesn't seem to work
-        currentRegionName = "";
+        if (other.tag == "Region")
+        {
+            currentRegionName = "";
+            // display it
+            regionUI.text = currentRegionName;
+        }
     }
 }
