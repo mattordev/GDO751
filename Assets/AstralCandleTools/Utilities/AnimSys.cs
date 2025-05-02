@@ -58,9 +58,18 @@ namespace AstralCandle.Utilities{
         /// <returns>Value between 0-1 resembling how complete we are in our animation</returns>
         public float Play(float delta, bool reverse = false){
             Elapsed += (!reverse)? delta : -delta;
+            return Play();
+        }
+
+        float Play(){
             Percent = Mathf.Clamp01(Elapsed / duration);
             Value = curve.Evaluate(Percent);
             return Value;
+        }
+
+        public float Trim(float t){
+            Elapsed = Mathf.Lerp(0, duration, t);
+            return Play();
         }
     }
 }

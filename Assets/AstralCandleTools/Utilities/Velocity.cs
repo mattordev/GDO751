@@ -11,6 +11,7 @@ namespace AstralCandle.Utilities{
     public class Velocity{
         Vector3 position;
         public Vector3 Value{ get; private set; }
+        public float Magnitude{ get; private set; }
         public Velocity(Vector3 position) => this.position = position;
 
         /// <summary>
@@ -26,6 +27,7 @@ namespace AstralCandle.Utilities{
             Value = newVal / Time.fixedDeltaTime;
             this.position = position;
 
+            Magnitude = Value.magnitude;
             return Value;
         }
     }
