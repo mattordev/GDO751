@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9676d677ad9696547b19078a6004ca48, type: 3}
   m_Name: PlrInput
   m_EditorClassIdentifier: 
+  forceHideCursor: 1
   asset: {fileID: -944628639613478452, guid: 54ee8ed15b6cf7945be51cffe2e19c84, type: 3}
   _actions:
   - name: Move
@@ -36,3 +37,19 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 1
+  - name: Zoom
+    runOnPerform: 1
+    action:
+      m_Name: Zoom
+      m_Type: 0
+      m_ExpectedControlType: Axis
+      m_Id: 5e9fcd7c-2b31-4557-96c8-7ca6706c5996
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 1
+  mouseSensitivity: {x: 15, y: 15}
+  controllerSensitivity: {x: 125, y: 125}
+  invertY: 0
+  mouseZoomSensitivity: 0.05
+  controllerZoomSensitivity: 0.05
