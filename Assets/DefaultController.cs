@@ -14,6 +14,7 @@ namespace AstralCandle{
         [SerializeField] UserInput input;
         [SerializeField] float maxSpeed, force;
         [SerializeField, Range(0, 1)] float slowMultiplier = 0.1f;
+        [SerializeField, Range(0,25)] float cameraRange = 10f;
         
         [SerializeField] float angularSmoothing = 0.1f;
         Quaternion smRot, smRotVel;
@@ -38,7 +39,7 @@ namespace AstralCandle{
 
         void Start()
         {
-            Camera.Take(CameraController.Mode.Pivot, transform, new Vector3(0, 0, -5), Vector3.zero, 45, 85);
+            Camera.Take(CameraController.Mode.Pivot, transform, new Vector3(0, 0, -cameraRange), Vector3.zero, 45, 85);
             smRot = transform.rotation;
         }
 
