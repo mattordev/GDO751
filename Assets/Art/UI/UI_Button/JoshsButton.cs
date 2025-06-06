@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// ©️2025 Designed and Programmed by Joshua Thompson. All rights reserved
@@ -15,12 +16,18 @@ using UnityEngine.UI;
 namespace AstralCandle.UI{
     [RequireComponent(typeof(Image))]
     public class JoshsButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler{
+        [SerializeField] TMP_Text label;
         [SerializeField] Settings settings;
         [SerializeField] AnimEaser easing;
         [SerializeField, Tooltip("What happens when the user clicks on this button")] UnityEvent onClick;
 
         Image _img;
         Image Image => _img ??= GetComponent<Image>();
+        
+
+        Color? _defaultLabCol;
+        Color DefaultLabCol => _defaultLabCol ??= label.color;
+
         Color? _defaultColour;
         Color DefaultColour => _defaultColour ??= Image.color;
         bool isHovering;
@@ -31,6 +38,7 @@ namespace AstralCandle.UI{
             easing.SetReverse(!isHovering);
             float value = easing.Play();
             Image.fillAmount = Mathf.LerpUnclamped(settings.minMaxSlider.min, settings.minMaxSlider.max, value);
+            label.color = Color.LerpUnclamped(DefaultLabCol, DefaultLabCol * settings.colourMultiplier.min, value);
 
             float flash = Mathf.Sin(Time.time * settings.flashingFrequency) / settings.flashingAmplitude;
             flash = Maths<float>.Remap(flash, -1, 1, 0, 1);

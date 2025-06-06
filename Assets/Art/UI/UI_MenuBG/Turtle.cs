@@ -9,7 +9,7 @@ namespace AstralCandle.UIAI{
     public abstract class Turtle : MonoBehaviour, ISimpleSteering{
         [SerializeField] float maxSpeed;
         [SerializeField] float maxForce;
-        [SerializeField] RectTransform canvas;
+        [SerializeField] protected RectTransform canvas;
         
 
         public Vector2 WorldPosition => Transform.anchoredPosition;
@@ -42,7 +42,7 @@ namespace AstralCandle.UIAI{
         /// Called in Update, should be used to calculate all the steering forces
         /// </summary>
         protected abstract Vector2[] Move();
-        void Update(){
+        protected virtual void Update(){
             Transform.anchoredPosition += Steering.Result(Move()) * Time.deltaTime;
             transform.right = (Vector3)Velocity.normalized;
         }

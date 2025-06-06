@@ -1,34 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.Assertions.Must;
+using UnityEngine.UI;
 
 /// <summary>
 /// ©️YEARHERE Designed and Programmed by Joshua Thompson. All rights reserved
 /// </summary>
 
 namespace AstralCandle.UIAI{
-    public class BirdTraveller : Turtle{
-        [SerializeField] float breakingDistance = 100;
-        Camera _c;
-        Camera Camera => _c ??= Camera.main;
+    public class BirdTraveller : TurtleTraveller{
+        [SerializeField] float strideDistance;
+        [SerializeField] Transform footprintStorage;
+        [SerializeField] Feet[] feet;
 
-        Vector2 UISpaceBounds_BL => ScreenToUISpace(Camera.main.ViewportToScreenPoint(new Vector2(0,0)));
-        Vector2 UISpaceBounds_TR => ScreenToUISpace(Camera.main.ViewportToScreenPoint(new Vector2(1,1)));
+        float timeTillStride;
 
-        Vector2? _target;
-        Vector2 Target => _target ??= GetRndPos();
+        bool toggleFoot = false;
 
-        Vector2 GetRndPos() => new(
-            UnityEngine.Random.Range(UISpaceBounds_BL.x, UISpaceBounds_TR.x),
-            UnityEngine.Random.Range(UISpaceBounds_BL.y, UISpaceBounds_TR.y)
-        );
+        protected override void Update() {
+            base.Update();
+            if (Time.time >= timeTillStride && feet[toggleFoot ? 1 : 0].Stride(Transform, canvas, footprintStorage, strideDistance)) {
+                toggleFoot = !toggleFoot;
 
-        protected override Vector2[] Move() {
-            if(Vector2.Distance(Target, WorldPosition) < breakingDistance * .1f){ _target = null; }
+                timeTillStride = Time.time + 1;
+            }
+        }
+        [Serializable]
+        public class Feet{
+
+            [SerializeField] Footprints _feet;
+
+            RectTransform _t;
+            public RectTransform T => _feet.transform as RectTransform;
+
+            Vector2? _prvPos;
+            public Vector2 PreviousPosition => _prvPos ??= T.position;
+
+            public bool Stride(RectTransform Transform, RectTransform canvas, Transform footprintStorage, float strideDistance){
+                if (Vector2.Distance(T.position, PreviousPosition) >= strideDistance){
+                    _prvPos = Transform.position;
+                    Instantiate(_feet, Transform.TransformPoint(T.anchoredPosition), T.rotation, footprintStorage).Activate();
+                    return true;
+                }
+                return false;
+            }
             
-            Vector2 arrive = Steering.Arrive(Target, breakingDistance);
-            return new Vector2[] { arrive };
+            
         }
     }
 }
