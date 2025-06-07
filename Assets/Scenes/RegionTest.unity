@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 169985463}
   - component: {fileID: 169985462}
   - component: {fileID: 169985461}
-  - component: {fileID: 169985460}
   m_Layer: 0
   m_Name: Region (Whispering Plains)
   m_TagString: Region
@@ -142,21 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &169985460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169985459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0632e86ee576489449f86722ca552374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  regionName: Whispering Plains
-  regionCollider: {fileID: 169985462}
-  currentWeatherType: 0
 --- !u!54 &169985461
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -199,9 +183,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &179948818
+--- !u!1 &221792989
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,39 +193,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 179948822}
-  - component: {fileID: 179948821}
-  - component: {fileID: 179948820}
-  - component: {fileID: 179948819}
+  - component: {fileID: 221792993}
+  - component: {fileID: 221792992}
+  - component: {fileID: 221792991}
+  - component: {fileID: 221792990}
   m_Layer: 0
-  m_Name: Region (Sunnytop Hills)
+  m_Name: Region (Sunnytop Plains)
   m_TagString: Region
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &179948819
+--- !u!114 &221792990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179948818}
+  m_GameObject: {fileID: 221792989}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0632e86ee576489449f86722ca552374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regionName: Sunnytop Hills
-  regionCollider: {fileID: 179948821}
+  regionName: Sunnytop Plains
+  regionCollider: {fileID: 0}
   currentWeatherType: 0
---- !u!54 &179948820
+--- !u!54 &221792991
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179948818}
+  m_GameObject: {fileID: 221792989}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -249,35 +233,35 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &179948821
+--- !u!65 &221792992
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179948818}
+  m_GameObject: {fileID: 221792989}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 100, z: 100}
+  m_Size: {x: 298.4, y: 50, z: 162.05}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &179948822
+--- !u!4 &221792993
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 179948818}
+  m_GameObject: {fileID: 221792989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 203, y: 50, z: 172}
+  m_LocalPosition: {x: 545.4, y: 25.6, z: 142.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
@@ -1098,7 +1082,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1881122301
 GameObject:

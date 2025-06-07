@@ -2,11 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
+using UnityEngine.Animations.Rigging;
+using AstralCandle.Game;
+using System.Numerics;
 
 public class RegionCreator : EditorWindow
 {
     private List<Region> Regions = new List<Region>();
-    private Vector2 scrollPosition; // For scrolling support
+    private UnityEngine.Vector2 scrollPosition; // For scrolling support
+    private UnityEngine.Vector3 newRegionSize = new UnityEngine.Vector3(100, 50, 100);
 
     [MenuItem("Tools/Region Creator")]
     public static void ShowWindow()
@@ -33,8 +37,10 @@ public class RegionCreator : EditorWindow
 
         if (GUILayout.Button("Create Regions"))
         {
-            // CreateRegion();
+            CreateRegion();
         }
+
+        newRegionSize = EditorGUILayout.Vector3Field("New Region Size:", newRegionSize);
 
         if (Regions.Count > 0)
         {
@@ -80,6 +86,7 @@ public class RegionCreator : EditorWindow
 
             if (removeIndex >= 0)
             {
+                DestroyImmediate(Regions[removeIndex].gameObject);
                 Regions.RemoveAt(removeIndex);
                 Repaint();
             }
@@ -103,5 +110,28 @@ public class RegionCreator : EditorWindow
         }
 
         Repaint();
+    }
+
+    private void CreateRegion()
+    {
+        GameObject newRegion = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        ProcessNewRegion(newRegion);
+        FindRegions();
+    }
+
+    private void ProcessNewRegion(GameObject newRegionToProcess)
+    {
+        newRegionToProcess.gameObject.name = "New Region";
+        newRegionToProcess.gameObject.tag = "Region";
+        DestroyImmediate(newRegionToProcess.GetComponent<MeshFilter>());
+        DestroyImmediate(newRegionToProcess.GetComponent<MeshRenderer>());
+        Rigidbody rb = newRegionToProcess.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.isKinematic = true;
+        Region regionScript = newRegionToProcess.AddComponent<Region>();
+        regionScript.regionName = "New Region";
+
+        //set box collider size
+        newRegionToProcess.GetComponent<BoxCollider>().size = newRegionSize;
     }
 }
