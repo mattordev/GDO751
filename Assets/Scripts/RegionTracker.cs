@@ -29,6 +29,8 @@ public class RegionTracker : MonoBehaviour
             currentRegionName = region.regionName;
             // display it
             regionUI.text = currentRegionName;
+            // Play audio transition sound
+            AudioManager.Instance.PlayTransitionSound(AudioClip clip);
         }
     }
 
