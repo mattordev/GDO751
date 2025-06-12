@@ -1,5 +1,5 @@
+using AstralCore.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ©️2025 Designed and Programmed by Joshua Thompson. All rights reserved
@@ -17,7 +17,7 @@ namespace AstralCandle.UI{
         /// Forcefully loads scene without any transition
         /// </summary>
         /// <param name="sceneName">The scene we want to load</param>
-        public static void ChangeScene(string sceneName = "MainMenu") => SceneManager.LoadScene(sceneName);
+        public static void ChangeScene(string sceneName = "MainMenu") => SceneManager.Instance.LoadScene(sceneName, "crossfade");
 
         /// <summary>
         /// Quits Application

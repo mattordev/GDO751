@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using AstralCandle.Utils.Animation;
+using AstralCore.Utils;
 using UnityEngine;
 
 /// <summary>
@@ -11,7 +11,7 @@ namespace AstralCandle.UI{
     public class Logo : MonoBehaviour{
         [SerializeField] AnimEaser easer;
         [SerializeField] float bounceHeight = 10;
-        [SerializeField] Utils.Maths<Vector2>.MinMax scales;
+        [SerializeField] MinMax<Vector2> scales;
 
         RectTransform _t;
         RectTransform Rect => _t ??= transform as RectTransform;

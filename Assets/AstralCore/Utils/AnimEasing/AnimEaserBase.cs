@@ -5,7 +5,7 @@ using UnityEngine;
 /// ©️2025 Designed and Programmed by Joshua Thompson. All rights reserved
 /// </summary>
 
-namespace AstralCandle.Utils.Animation{
+namespace AstralCore.Utils{
     [Serializable] public abstract class AnimEaserBase{
         [SerializeField, Tooltip("This will control the value through time")] AnimationCurve _curve = AnimationCurve.Linear(0, 0, 1, 1);
         [SerializeField, Tooltip("The duration of this animation")] float _duration;

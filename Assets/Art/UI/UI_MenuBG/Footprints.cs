@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using AstralCandle.Utils.Animation;
+using AstralCore.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 

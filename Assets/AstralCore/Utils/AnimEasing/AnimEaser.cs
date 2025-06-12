@@ -5,7 +5,7 @@ using UnityEngine;
 /// ©️2025 Designed and Programmed by Joshua Thompson. All rights reserved
 /// </summary>
 
-namespace AstralCandle.Utils.Animation{
+namespace AstralCore.Utils{
     [Serializable] public class AnimEaser : AnimEaserBase{
         /// <summary>
         /// Constructor for an animation easer
@@ -26,14 +26,17 @@ namespace AstralCandle.Utils.Animation{
         /// </summary>
         /// <param name="value">A percentage value between 0-1</param>
         /// <returns>The position in the curve</returns>
-        public float Trim(float value) => Value = Curve.Evaluate(value);
+        public float Trim(float value){
+            Elapsed = Mathf.Lerp(0, Duration, value);
+            return Value = Curve.Evaluate(value);
+        }
         
         /// <summary>
         /// Finds the position in the curve given the parsed value
         /// </summary>
         /// <param name="value">A value (In seconds)</param>
         /// <returns>The position in the curve</returns>
-        public float TrimInSeconds(float value) => Value = Curve.Evaluate(Mathf.Clamp01(value / Duration));
+        public float TrimInSeconds(float value) => Trim(Mathf.Clamp01(value / Duration));
 
         /// <summary>
         /// Runs the animation
