@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using AstralCandle.Game;
 
 public class RegionTracker : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class RegionTracker : MonoBehaviour
             // display it
             regionUI.text = currentRegionName;
             // Play audio transition sound
-            AudioManager.Instance.PlayTransitionSound(AudioClip clip);
+            Audio.Instance.music.Play(region.regionTransitionSFX);
         }
     }
 

@@ -10,6 +10,8 @@ public class Region : MonoBehaviour
     public string regionName;
     public BoxCollider regionCollider; // region collider.
 
+    public AudioClip regionTransitionSFX; // sound effect to play when entering this region.
+
     public enum weatherType
     {
         Clear,
