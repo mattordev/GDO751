@@ -15,9 +15,8 @@ using TMPro;
 namespace AstralCandle.UI
 {
     [RequireComponent(typeof(Image))]
-    public class JoshsButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
-    {
-        [SerializeField] TMP_Text label;
+    public class JoshsButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler{
+        [SerializeField] public TMP_Text label;
         [SerializeField] Image image;
         [SerializeField] Settings settings;
         [SerializeField] AnimEaser easing;
@@ -29,8 +28,10 @@ namespace AstralCandle.UI
         Image Image => _img ??= GetComponent<Image>();
 
 
+        Vector2? _defaultScale;
+        Vector2 DefaultScale => _defaultScale ??= transform.localScale;
         Color? _defaultLabCol;
-        Color DefaultLabCol => _defaultLabCol ??= (label?.color ?? image.color);
+        Color DefaultLabCol => _defaultLabCol ??= (image?.color ?? label.color);
 
         Color? _defaultColour;
         Color DefaultColour => _defaultColour ??= Image.color;
@@ -42,15 +43,16 @@ namespace AstralCandle.UI
             easing.SetReverse(!isHovering);
             float value = easing.Play();
             Image.fillAmount = Mathf.LerpUnclamped(settings.minMaxSlider.min, settings.minMaxSlider.max, value);
-
-            if (label)
-            {
-                label.color = Color.LerpUnclamped(DefaultLabCol, DefaultLabCol * settings.colourMultiplier.min, value);
-            }
-            else if (image)
+            
+            if (image)
             {
                 image.color = Color.LerpUnclamped(DefaultLabCol, DefaultLabCol * settings.colourMultiplier.min, value);
             }
+            else if (label)
+            {
+                label.color = Color.LerpUnclamped(DefaultLabCol, DefaultLabCol * settings.colourMultiplier.min, value);
+            }
+            
 
             float flash = Mathf.Sin(Time.time * settings.flashingFrequency) / settings.flashingAmplitude;
             flash = Methods.Remap(flash, -1, 1, 0, 1);
@@ -59,7 +61,7 @@ namespace AstralCandle.UI
 
             float x = Mathf.Lerp(settings.scaling.min, settings.scaling.max, flash);
             float y = Mathf.Lerp(settings.scaling.min, settings.scaling.max, 1 - flash);
-            Image.transform.localScale = Vector2.Lerp(Vector2.one, new(x, y), value);
+            Image.transform.localScale = Vector2.Lerp(DefaultScale, Vector3.Scale(DefaultScale, new(x, y)), value);
         }
 
         public void OnPointerClick(PointerEventData eventData) => onClick?.Invoke();

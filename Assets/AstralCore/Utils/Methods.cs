@@ -6,7 +6,7 @@ using UnityEngine;
 /// ©️2025 Designed and Programmed by Joshua Thompson. All rights reserved
 /// </summary>
 
-namespace AstralCandle{
+namespace AstralCore.Utils{
     public static class Methods
     {
         /// <summary>

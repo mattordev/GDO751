@@ -14,7 +14,7 @@ namespace AstralCandle.UI{
         [SerializeField] MinMax<Vector2> scales;
 
         RectTransform _t;
-        RectTransform Rect => _t ??= transform as RectTransform;
+        RectTransform Rect => _t ??= transform.GetChild(0) as RectTransform;
         float? yOffset;
         float YOffset => yOffset ??= Rect.anchoredPosition.y;
         
@@ -24,7 +24,7 @@ namespace AstralCandle.UI{
             timeValue = Mathf.InverseLerp(-1, 1, timeValue); // Maps it between 0, 1
             float value = easer.Trim(timeValue);
 
-            transform.localScale = Vector2.LerpUnclamped(scales.min, scales.max, value);
+            Rect.localScale = Vector2.LerpUnclamped(scales.min, scales.max, value);
             Rect.anchoredPosition = new(0, Mathf.LerpUnclamped(YOffset, YOffset + bounceHeight, value));
         }
     }
