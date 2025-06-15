@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RegionTracker : MonoBehaviour
 {
-    private string currentRegionName;
+    [SerializeField] private string currentRegionName;
     public TMP_Text regionUI;
 
 
