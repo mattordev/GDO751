@@ -38,7 +38,7 @@ namespace AstralCore.QOL{
         public void Apply();
 
         /// <summary>
-        /// Called once, to setup this setting
+        /// Called once, to setup this setting if there is no data available
         /// </summary>
         public void Init();
     }
@@ -69,5 +69,6 @@ namespace AstralCore.QOL{
         /// <param name="rawData">To be to processed</param>
         /// <param name="data">Data array</param>
         protected void Decode(string rawData, out string[] data) => data = rawData.Split(',');
+
     }
 }

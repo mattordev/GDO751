@@ -3127,7 +3127,8 @@ AudioSource:
   m_GameObject: {fileID: 530320467}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8720058280455163176, guid: 35ccf64f805090e48ac88cc598728335,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3223,7 +3224,8 @@ AudioSource:
   m_GameObject: {fileID: 530320467}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8720058280455163176, guid: 35ccf64f805090e48ac88cc598728335,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4929,7 +4931,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1965561672}
+        m_TargetAssemblyTypeName: AstralCandle.UISettingsManager, Assembly-CSharp
+        m_MethodName: SetMusic
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1000012615
 GameObject:
   m_ObjectHideFlags: 0
@@ -5119,7 +5133,8 @@ AudioSource:
   m_GameObject: {fileID: 1013838878}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7033818447265634001, guid: 35ccf64f805090e48ac88cc598728335,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -6335,7 +6350,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1965561672}
+        m_TargetAssemblyTypeName: AstralCandle.UISettingsManager, Assembly-CSharp
+        m_MethodName: SetMaster
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1256830117
 GameObject:
   m_ObjectHideFlags: 0
@@ -7333,6 +7360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showDebug: 1
+  mixer: {fileID: 24100000, guid: 35ccf64f805090e48ac88cc598728335, type: 2}
 --- !u!1 &1483268147
 GameObject:
   m_ObjectHideFlags: 0
@@ -7850,7 +7878,8 @@ AudioSource:
   m_GameObject: {fileID: 1576499253}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8720058280455163176, guid: 35ccf64f805090e48ac88cc598728335,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -8573,7 +8602,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1965561672}
+        m_TargetAssemblyTypeName: AstralCandle.UISettingsManager, Assembly-CSharp
+        m_MethodName: SetSFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1793909966
 GameObject:
   m_ObjectHideFlags: 0
@@ -9410,7 +9451,13 @@ MonoBehaviour:
   resolution: {fileID: 1079595512}
   graphics: {fileID: 466597728}
   fpsText: {fileID: 611558365}
+  masterText: {fileID: 1553696898}
+  sfxText: {fileID: 38778041}
+  musicText: {fileID: 427444398}
   fps: {fileID: 504721564}
+  master: {fileID: 1203759163}
+  sfx: {fileID: 1790888318}
+  music: {fileID: 995513490}
   fullscreen: {fileID: 676238290}
   vsync: {fileID: 1864295113}
 --- !u!1 &1986511454

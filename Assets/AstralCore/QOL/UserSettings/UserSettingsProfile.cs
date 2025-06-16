@@ -8,6 +8,7 @@ namespace AstralCore.QOL{
         readonly Graphics graphics = new("graphics");
         readonly VSync vSync = new("vsync");
         readonly FPS fps = new("fps");
-        protected override UserSetting[] CreateModules() => new UserSetting[] { resolution, graphics, vSync, fps};
+        readonly Sound sound = new("sound");
+        protected override UserSetting[] CreateModules() => new UserSetting[] { resolution, graphics, vSync, fps, sound};
     }
 }

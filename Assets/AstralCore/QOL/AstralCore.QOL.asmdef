@@ -2,7 +2,8 @@
     "name": "AstralCore.QOL",
     "rootNamespace": "",
     "references": [
-        "GUID:4e437d452f260fb4c94e9d1ded75eba8"
+        "GUID:4e437d452f260fb4c94e9d1ded75eba8",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AstralCore.Utils;
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
 /// ©️2025 Designed and Programmed by Joshua Thompson. All rights reserved
@@ -11,6 +12,11 @@ using UnityEngine;
 namespace AstralCore.QOL{
     public abstract class UserSettingsManager : Singleton<UserSettingsManager>{
         [SerializeField] bool showDebug = false;
+        [SerializeField] AudioMixer mixer;
+        /// <summary>
+        /// The mixer associated to this settings manager
+        /// </summary>
+        public static AudioMixer Mixer => Instance.mixer;
         /// <summary>
         /// The datastore name
         /// </summary>
@@ -68,17 +74,22 @@ namespace AstralCore.QOL{
                 if (parts.Length != 2) { continue; } // Something wrong with this setting... - If less or greater args
 
                 // Set and Apply
-                if (settings.TryGetValue(parts[0], out UserSetting setting)){
+                if (settings.TryGetValue(parts[0], out UserSetting setting))
+                {
                     setting.Decode(parts[1]); // Cache setting
                     setting.Apply();
                 }
             }
         }
 
+
+        
+
         /// <summary>
         /// Saves all the settings
         /// </summary>
-        public static void Save(){
+        public static void Save()
+        {
             string serialised = string.Join('|', settings.Select(m => $"{m.Key}={m.Value.Encode()}")); // Gathers all the settings into one
             PlayerPrefs.SetString(PREFS_NAME, serialised);
             PlayerPrefs.Save();
@@ -101,6 +112,11 @@ namespace AstralCore.QOL{
         
 
 
-        void Awake() => CreateSingleton(false, false, new Action(Init));
+        void Awake() => CreateSingleton(false, false);
+        void Start()
+        {
+            if(Instance != this){ return; }
+            Init();
+        }
     }
 }
