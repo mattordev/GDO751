@@ -12,8 +12,8 @@ namespace mattordev.regions
     {
         public string regionName;
         public BoxCollider regionCollider; // region collider.
-
         public AudioClip regionTransitionSFX; // sound effect to play when entering this region.
+        public float scoreBoostWhenEntering = 0f; // score boost when entering this region.
 
         public enum weatherType
         {
