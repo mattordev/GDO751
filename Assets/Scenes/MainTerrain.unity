@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: Mountains Respite
   regionCollider: {fileID: 0}
-  regionTransitionSFX: {fileID: 0}
+  regionTransitionSFX: {fileID: 8300000, guid: cd7d068bc52ebfe4b9a614ec517bd8fe, type: 3}
   scoreBoostWhenEntering: 0
   currentWeatherType: 0
 --- !u!54 &307892480
@@ -1600,6 +1600,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4795545252333984795, guid: 871480cf22fe1dd46b045682a7c65626,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 18a6dfbbf0d969c4b8e2d880b0d9c4d0,
+        type: 2}
+    - target: {fileID: 4795545252333984795, guid: 871480cf22fe1dd46b045682a7c65626,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4204659812543449240, guid: 18a6dfbbf0d969c4b8e2d880b0d9c4d0,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 871480cf22fe1dd46b045682a7c65626, type: 3}
 --- !u!1001 &387722006
@@ -4467,7 +4479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: Lost Forest
   regionCollider: {fileID: 0}
-  regionTransitionSFX: {fileID: 0}
+  regionTransitionSFX: {fileID: 8300000, guid: cd7d068bc52ebfe4b9a614ec517bd8fe, type: 3}
   scoreBoostWhenEntering: 0
   currentWeatherType: 0
 --- !u!54 &1676160499
@@ -5120,7 +5132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: Mountain Approach
   regionCollider: {fileID: 0}
-  regionTransitionSFX: {fileID: 0}
+  regionTransitionSFX: {fileID: 8300000, guid: cd7d068bc52ebfe4b9a614ec517bd8fe, type: 3}
   scoreBoostWhenEntering: 0
   currentWeatherType: 0
 --- !u!54 &1772045856
