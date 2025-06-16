@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using AstralCore.SFX;
@@ -27,7 +25,7 @@ namespace mattordev.regions
                 // display it
                 regionUI.text = currentRegionName;
                 // Play audio transition sound
-                Audio.Instance.music.Play(region.regionTransitionSFX);
+                Audio.Instance.music.Play(new(region.regionTransitionSFX));
             }
         }
 

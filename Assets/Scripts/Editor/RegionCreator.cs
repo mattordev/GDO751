@@ -2,10 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
-using UnityEngine.Animations.Rigging;
-using AstralCandle.Game;
-using System.Numerics;
-
+using mattordev.regions;
 public class RegionCreator : EditorWindow
 {
     private List<Region> Regions = new List<Region>();
