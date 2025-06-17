@@ -57,13 +57,17 @@ namespace mattordev.game.score
         public void AddScore(int amount)
         {
             score += amount; // Increase score by the specified amount.
+            // Debug.Log($"Score added: {amount}. Current score: {score}"); // Log the score addition.
             UpdateScoreText(); // Update the UI text to reflect the new score.
         }
 
+        [ContextMenu("Reset Score")]
         void ResetScore()
         {
             score = 0; // Reset the score to zero.
             UpdateScoreText(); // Update the UI text to reflect the reset score.
+            PlayerPrefs.DeleteKey(highScoreKey); // Delete the high score from PlayerPrefs.
+            highScore = 0; // Reset the high score to zero.
         }
 
         void UpdateScoreText()

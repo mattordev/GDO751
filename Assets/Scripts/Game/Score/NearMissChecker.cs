@@ -28,8 +28,6 @@ namespace mattordev.game.score
         /// </summary>
         void CheckForNearMisses()
         {
-
-
             // Get all colliders within the near miss distance.
             hitColliders = Physics.OverlapSphere(transform.position, nearMissDistance, targetLayer);
 
@@ -50,7 +48,7 @@ namespace mattordev.game.score
                 // Change layer to prevent further detection.
                 hitCollider.gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the layer to prevent further detection.
                 //change it back after a short delay.
-                StartCoroutine(ResetLayerAfterDelay(hitCollider.gameObject, 5f));
+                StartCoroutine(ResetLayerAfterDelay(hitCollider.gameObject, nearMissCooldown));
             }
 
             IEnumerator ResetLayerAfterDelay(GameObject target, float delay)
@@ -60,12 +58,13 @@ namespace mattordev.game.score
                 Debug.Log("Near miss cooldown complete for: " + target.name);
             }
 
-            void OnDrawGizmos()
-            {
-                // Draw a sphere in the editor to visualize the near miss distance.
-                Gizmos.color = Color.yellow;
-                Gizmos.DrawWireSphere(transform.position, nearMissDistance);
-            }
+        }
+
+        void OnDrawGizmos()
+        {
+            // Draw a sphere in the editor to visualize the near miss distance.
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, nearMissDistance);
         }
     }
 }
