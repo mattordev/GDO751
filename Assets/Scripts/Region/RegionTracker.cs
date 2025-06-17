@@ -5,6 +5,9 @@ using mattordev.game.score;
 using System.Collections.Generic;
 
 
+/// <author>
+/// ©️2025 Designed and Programmed by Matthew Roberts. All rights reserved.
+/// </author>
 
 namespace mattordev.regions
 {
