@@ -2,6 +2,9 @@ using TMPro;
 using UnityEngine;
 using AstralCore.SFX;
 
+/// <author>
+/// ©️2025 Designed and Programmed by Matthew Roberts. All rights reserved.
+/// </author>
 
 namespace mattordev.regions
 {
