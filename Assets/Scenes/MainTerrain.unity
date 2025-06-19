@@ -6866,6 +6866,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Score Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3284508841785753494, guid: 2aa19c909c2ed3e42b120c57be50869b,
+        type: 3}
+      propertyPath: animEaser._duration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3403060544689269555, guid: 2aa19c909c2ed3e42b120c57be50869b,
         type: 3}
       propertyPath: m_Pivot.x

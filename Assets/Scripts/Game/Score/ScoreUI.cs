@@ -80,16 +80,13 @@ namespace mattordev.game.score
         {
             float duration = animEaser.Duration;
             float timer = 0f;
-            float value = 0f; // Initialize value for animation progress
-
             // Start hidden and scaled to zero
             scorePopUp.transform.localScale = Vector3.zero;
 
             while (timer < duration)
             {
-                value = animEaser.Play(); // Update animation
+                float value = animEaser.Play(); // Update animation
                 scorePopUp.transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one * 1.5f, value);
-
 
                 timer += Time.deltaTime;
                 yield return null;
@@ -97,8 +94,7 @@ namespace mattordev.game.score
 
             // Optional: snap back to zero (or one) if easing ends mid-animation
             scorePopUp.transform.localScale = Vector3.zero;
-            value = animEaser.Trim(0f); // Reset the animation to the start
-
+            animEaser.Trim(0f); // Reset the animation to the start
 
             // Hide the text
             scorePopUp.text = "";
