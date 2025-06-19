@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 /// <author>
 /// ©️2025 Designed and Programmed by Matthew Roberts. All rights reserved.
@@ -42,6 +43,7 @@ namespace mattordev.game.score
 
                     Debug.Log("Near miss detected with: " + hitCollider.name);
                     ScoreManager.Instance.AddScore(10); // Add score for the near miss.
+                    ScoreUI.Instance.FlashScoreUI(10); // Flash the score UI with the added score.
                     // need to flash the score addition ui on screen.
                 }
 
