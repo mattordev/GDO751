@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AstralCore.Utils;
-using TMPro; // TextMesh Pro for UI text rendering.
+using TMPro;
 
+// Todo:
+// 1. Add label control to scoreboosts. This will allow us to control the text that appears on the score pop-up. AKA "Near Miss", "New region discovered", etc.
+// 2. Add fade in and fade out animations to the score pop-up text.
+// 3. Add a sound effect to the score pop-up text using astralcore SFX system.
+
+/// <author>
+/// ©️2025 Designed and Programmed by Matthew Roberts. All rights reserved.
+/// </author>
 
 namespace mattordev.game.score
 {
