@@ -49,10 +49,11 @@ namespace mattordev.game.score
 
         /// <summary>
         /// Flashes the score UI with a pop-up effect.
-        /// This method updates the score pop-up text and applies an animation effect to it using the AnimEaser.
+        /// This method updates the score pop-up text with the given score using a coroutine to animate the text.
+        /// It uses the AnimEaser to control the timing and easing of the animation.
         /// </summary>
         /// <param name="score"></param>
-        /// The Score to flash & add to the total score.
+        /// The Score to flash on the UI. It will be displayed as "+{score}!".
         /// <param name="score"></param>
         public void FlashScoreUI(int score)
         {
