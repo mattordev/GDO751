@@ -18,6 +18,7 @@ namespace mattordev.game.score
     public class ScoreUI : MonoBehaviour
     {
         [SerializeField] private TMP_Text scorePopUp; // Text component for displaying score.
+        [SerializeField] private TMP_Text scoreLabel; // Text component for displaying where the score came from. E.g "Near miss!"
 
         [SerializeField] private AnimEaser animEaser; // Animation easer for score pop-up animations.
 
@@ -55,14 +56,15 @@ namespace mattordev.game.score
         /// <param name="score"></param>
         /// The Score to flash on the UI. It will be displayed as "+{score}!".
         /// <param name="score"></param>
-        public void FlashScoreUI(int score)
+        public void FlashScoreUI(int score, string scoreType)
         {
             if (scorePopUp != null)
             {
+                scoreLabel.text = $"{scoreType}!"; // Set the score label text to the type of score.
                 scorePopUp.text = $"+{score}!";
                 animEaser.Play(); // Start the easing animation
 
-                StartCoroutine(AnimateScorePopUp()); // Run the coroutine to animate scale over time
+                StartCoroutine(AnimateScoreUI()); // Run the coroutine to animate scale over time
             }
             else
             {
@@ -76,28 +78,73 @@ namespace mattordev.game.score
         /// It uses the AnimEaser to control the timing and easing of the animation.
         /// </summary>
         /// <returns> Nothing </returns>
-        private IEnumerator AnimateScorePopUp()
+        private IEnumerator AnimateScoreUI()
         {
             float duration = animEaser.Duration;
             float timer = 0f;
             // Start hidden and scaled to zero
+            scoreLabel.transform.localScale = Vector3.zero;
             scorePopUp.transform.localScale = Vector3.zero;
+
 
             while (timer < duration)
             {
                 float value = animEaser.Play(); // Update animation
                 scorePopUp.transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one * 1.5f, value);
+                scoreLabel.transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one * 1.5f, value);
 
                 timer += Time.deltaTime;
                 yield return null;
             }
 
             // Optional: snap back to zero (or one) if easing ends mid-animation
-            scorePopUp.transform.localScale = Vector3.zero;
-            animEaser.Trim(0f); // Reset the animation to the start
+            // scoreLabel.transform.localScale = Vector3.zero;
+            // scorePopUp.transform.localScale = Vector3.zero;
+            // animEaser.Trim(0f); // Reset the animation to the start
 
-            // Hide the text
-            scorePopUp.text = "";
+            yield return StartCoroutine(FadeScoreUI()); // Start fading out the score UI after the animation completes            
         }
+
+        /// <summary>
+        /// Animates the score UI with a fade-out effect.
+        /// This coroutine fades out the score pop-up text over a specified duration using the AnimEaser.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator FadeScoreUI()
+        {
+            float duration = animEaser.Duration;
+            float timer = 0f;
+
+            // Store original start colors (with full alpha)
+            Color startLabelColor = scoreLabel.color;
+            Color startPopupColor = scorePopUp.color;
+
+            // Create faded target colors
+            Color fadedLabelColor = new Color(startLabelColor.r, startLabelColor.g, startLabelColor.b, 0f);
+            Color fadedPopupColor = new Color(startPopupColor.r, startPopupColor.g, startPopupColor.b, 0f);
+
+            while (timer < duration)
+            {
+                float value = animEaser.TrimInSeconds(timer); // Update animation
+                scoreLabel.color = Color.Lerp(startLabelColor, fadedLabelColor, value);
+                scorePopUp.color = Color.Lerp(startPopupColor, fadedPopupColor, value);
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            // Reset text
+            scorePopUp.text = "";
+            scoreLabel.text = "";
+
+            // Reset color alphas back to fully visible for next time
+            scoreLabel.color = startLabelColor;
+            scorePopUp.color = startPopupColor;
+
+            // Reset animation to start
+            animEaser.Trim(0f);
+        }
+
+
     }
 }

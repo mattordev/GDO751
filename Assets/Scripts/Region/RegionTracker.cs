@@ -106,7 +106,7 @@ namespace mattordev.regions
                 visitedRegions.Add(region);
 
                 ScoreManager.Instance.AddScore(region.scoreBoostWhenEntering); // Add score boost when entering the region.
-                ScoreUI.Instance.FlashScoreUI(region.scoreBoostWhenEntering); // Flash the score UI with the score boost.
+                ScoreUI.Instance.FlashScoreUI(region.scoreBoostWhenEntering, "New Region"); // Flash the score UI with the score boost.
                 Debug.Log($"Entered region: {currentRegionName}. Score boosted by {region.scoreBoostWhenEntering}.");
             }
         }

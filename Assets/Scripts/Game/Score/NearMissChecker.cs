@@ -43,7 +43,7 @@ namespace mattordev.game.score
 
                     Debug.Log("Near miss detected with: " + hitCollider.name);
                     ScoreManager.Instance.AddScore(10); // Add score for the near miss.
-                    ScoreUI.Instance.FlashScoreUI(10); // Flash the score UI with the added score.
+                    ScoreUI.Instance.FlashScoreUI(10, "Near Miss"); // Flash the score UI with the added score.
                     // need to flash the score addition ui on screen.
                 }
 
