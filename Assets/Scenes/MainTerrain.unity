@@ -1506,18 +1506,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4795545252333984795, guid: 871480cf22fe1dd46b045682a7c65626,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 18a6dfbbf0d969c4b8e2d880b0d9c4d0,
-        type: 2}
-    - target: {fileID: 4795545252333984795, guid: 871480cf22fe1dd46b045682a7c65626,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4204659812543449240, guid: 18a6dfbbf0d969c4b8e2d880b0d9c4d0,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 871480cf22fe1dd46b045682a7c65626, type: 3}
 --- !u!1001 &387722006
@@ -5091,6 +5079,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   regionUI: {fileID: 1799957381}
+  animEaser:
+    _curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _duration: 3
+    _time: 0
 --- !u!114 &1703009843
 MonoBehaviour:
   m_ObjectHideFlags: 0
