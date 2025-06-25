@@ -19,7 +19,7 @@ namespace AstralCore.Utils{
         public static T Instance{
             get{
                 if (_instance == null){
-                    _instance = FindObjectOfType<T>();
+                    _instance = FindAnyObjectByType<T>();
                     DontDestroyOnLoad(_instance.gameObject);
                 }
                 return _instance;
