@@ -8,19 +8,15 @@ using UnityEngine;
 /// </summary>
 
 namespace AstralCandle.Character{
-    public class CharacterBase : Steering3D{
+    public abstract class BirdMotor : Steering3D{
         [SerializeField] float gravityScaler = 12f;
         [SerializeField] float drag = 1;
         [SerializeField] float thrustPower = 1;
         float GravityAffector => Vector3.Dot(transform.forward, Vector3.down);
         float velocity;
-        protected override Vector3[] GetForces() => new Vector3[] { };
-
-        protected override void InitOnStart() { }
-
+        
         protected override void ProcessFixedUpdate(){
             Vector3 dir = Velocity.normalized;
-            dir.z = 1;
 
             velocity += (gravityScaler * GravityAffector) * Time.fixedDeltaTime;
             velocity *= 1 - (drag * Time.fixedDeltaTime);            
