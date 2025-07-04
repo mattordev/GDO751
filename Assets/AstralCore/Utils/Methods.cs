@@ -28,14 +28,14 @@ namespace AstralCore.Utils{
             if (doClamp) { i = Mathf.Clamp(i, toMin, toMax); }
             if (toMax < toMin) { i = toMin + toMax - i; } // Inverts it to ensure toMax is always greater
             return i;
-        } 
-        
+        }
+
         /// <summary>
         /// Useful for creating "Wrap-around" values between 0 and the maxValue. (By default will iterate upwards)
         /// </summary>
         /// <param name="value">The value we wish to modify</param>
         /// <param name="maxValue">The max value </param>
         /// <param name="doesReverse">Reverses the operation if true</param>
-        public static void ModulusCounter(ref int value, int maxValue, bool doesReverse = false) => value = (value + (doesReverse? -1 + maxValue: +1)) % maxValue;
+        public static void ModulusCounter(ref int value, int maxValue, bool doesReverse = false) => value = (value + (doesReverse ? -1 + maxValue : +1)) % maxValue;
     }
 }

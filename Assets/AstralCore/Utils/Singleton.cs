@@ -33,7 +33,7 @@ namespace AstralCore.Utils{
         /// <param name="force">If a new instance is desired then when true will force the new instance to be created</param>
         /// <param name="callback">If successfully made into a singleton. What should happen afterwards?</param>
         /// <returns>Was successful?</returns>
-        public bool CreateSingleton(bool destroyOnLoad = true, bool force = false, Action callback = null) {
+        protected bool CreateSingleton(bool destroyOnLoad = true, bool force = false, Action callback = null) {
             if (_instance == null || force) {
                 Destroy(_instance?.gameObject); // Remove old
                 _instance = this as T;
