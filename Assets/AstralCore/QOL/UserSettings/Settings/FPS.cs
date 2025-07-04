@@ -8,7 +8,7 @@ using UnityEngine;
 namespace AstralCore.QOL{
     public class FPS : UserSetting{
         public const int MIN_FPS = 24;
-        public int maxFPS => Screen.currentResolution.refreshRate;
+        public int maxFPS => (int)Screen.currentResolution.refreshRateRatio.value;
 
         public FPS(string name) : base(name) { }
         int _fps;

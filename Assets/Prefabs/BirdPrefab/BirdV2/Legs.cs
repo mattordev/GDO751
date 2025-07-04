@@ -1,3 +1,4 @@
+using System;
 using AstralCandle.Bird;
 using AstralCore.Utils;
 using UnityEngine;
@@ -8,29 +9,25 @@ using UnityEngine;
 
 namespace AstralCandle{
     public class Legs : BirdAnimProfile<BirdMaster>{
-        [SerializeField] float speedThreshold;
-        [SerializeField] float speedTuneSmoothing = .1f;
+        [SerializeField, Range(0.00001f, 1)] float lerpThreshold = .2f;
         [SerializeField] AnimEaser easing;
         [SerializeField] Vector2 relaxed, flying;
         [SerializeField] float legMoveFreq = 10, legMoveAmpltiude = 5;
 
         float legMovementTimer = 0;
 
-        float speedTuneVel;
         float curSpeed = 0;
 
 
         public override void Run(BirdMaster master, float delta){
-            curSpeed = Mathf.SmoothDamp(curSpeed, master.Motor.MoveVelocity, ref speedTuneVel, speedTuneSmoothing, Mathf.Infinity, delta);
-
             Vector3 offset = Vector2.zero;
             switch(master.isGrounded){
                 case true:
                     break;
                 case false:
                     legMovementTimer += delta * legMoveFreq;
-                    float t = easing.Trim(curSpeed / speedThreshold);
-                    offset = Vector3.LerpUnclamped(relaxed, flying, t);
+                    
+                    offset = Vector3.LerpUnclamped(relaxed, flying, Mathf.Clamp01(master.Motor.GetPercentSpeed() / lerpThreshold));
                     offset += new Vector3(Mathf.Cos(legMovementTimer/3) / legMoveAmpltiude, 0);
                     break;
             }

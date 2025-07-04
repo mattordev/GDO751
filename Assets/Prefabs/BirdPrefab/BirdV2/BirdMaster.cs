@@ -18,6 +18,9 @@ namespace AstralCandle.Bird{
 
         public BirdMotor Motor => motor;
 
+        private void Awake() {
+            profiles = GetComponents<BirdAnimProfile<BirdMaster>>();
+        }
 
         void LateUpdate()
         {

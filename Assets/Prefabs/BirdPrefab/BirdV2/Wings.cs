@@ -10,7 +10,6 @@ using UnityEngine;
 
 namespace AstralCandle{
     public class Wings: BirdAnimProfile<BirdMaster>{
-        [SerializeField] float speedThreshold;
         [SerializeField] float speedTuneSmoothing = .1f;
         [SerializeField] AnimEaser easing;
         [SerializeField] MinMax<float> orientationThresholds = new(.5f, .9f);
@@ -22,33 +21,34 @@ namespace AstralCandle{
         [SerializeField] float flapAmp = .1f;
         [SerializeField] float flapRange;
         [SerializeField] float flapPull;
+        [SerializeField] float smoothingTransition = 0.1f;
 
         float speedTuneVel;
         float curSpeed = 0;
         float flapTimer = 0;
 
-        public override void Run(BirdMaster master, float delta){
-            curSpeed = Mathf.SmoothDamp(curSpeed, master.Motor.MoveVelocity, ref speedTuneVel, speedTuneSmoothing, Mathf.Infinity, delta);
-            float speedPercent = easing.Trim(curSpeed / speedThreshold);
+        Vector3 currentPos, posvel;
 
+        public override void Run(BirdMaster master, float delta){
             float orientation = master.DirectionToGround(orientationThresholds.min, orientationThresholds.max);
 
-            Vector3 position = default;
-            switch(master.isGrounded){
+            switch (master.isGrounded)
+            {
                 case true:
                     break;
                 case false:
                     flapTimer += delta * flapFreq;
                     Vector3 flap = flapping + new Vector3(-Mathf.Cos(flapTimer) / flapAmp * flapPull, Mathf.Sin(flapTimer) / flapAmp) * flapRange;
-                    if(orientation >= stopFlappingThreshold){ flap = flapping; }
+                    if (orientation >= stopFlappingThreshold || (!master.Motor.activeMotion && master.Motor.GetPercentSpeed() > 0.1f)) { flap = flapping; }
 
                     // relaxed if facing ground
-                    position = Vector3.LerpUnclamped(flap, relaxed, orientation);
+                    Vector3 target = Vector3.LerpUnclamped(flap, relaxed, orientation);
+                    currentPos = Vector3.SmoothDamp(currentPos, target, ref posvel, smoothingTransition);
                     break;
             }
 
 
-            foreach(Bone b in bones){ b.Set(transform, position); }            
+            foreach (Bone b in bones) { b.Set(transform, currentPos); }
         }
 
 

@@ -19,14 +19,20 @@ namespace AstralCandle.Character{
         public float GravityAffector => Vector3.Dot(transform.forward, Vector3.down);
         protected float velocity;
         public float MoveVelocity => velocity;
+        /// <summary>
+        /// If true, then thrust is being applied
+        /// </summary>
+        public bool activeMotion = false;
         
-        protected override void ProcessFixedUpdate(){
+        protected override void ProcessFixedUpdate()
+        {
             // Motion calculation
             velocity += (gravityScaler * GravityAffector) * Time.fixedDeltaTime;
-            velocity *= 1 - (drag * Time.fixedDeltaTime);            
+            velocity *= 1 - (drag * Time.fixedDeltaTime);
             Vector3 dir = transform.InverseTransformDirection(Velocity.normalized);
             if (dir.z > 0) { velocity += thrustPower * Time.fixedDeltaTime; }
-
+            activeMotion = dir.z > 0;
+            
             velocity = Mathf.Clamp(velocity, 0, Profile.maxSpeed);
 
             // Rotation calculation

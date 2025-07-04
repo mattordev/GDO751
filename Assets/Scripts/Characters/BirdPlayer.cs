@@ -21,7 +21,6 @@ namespace AstralCandle.Character{
         protected override Quaternion GetDesiredRotation(){
             float turningSharpness = baseTurningSpeed * turningSensitivity.Evaluate(GetPercentSpeed());
             Quaternion desiredLook = Quaternion.Euler(Camera.eulerAngles.x, Camera.eulerAngles.y, 0);
-
             curRot.SmoothDamp(desiredLook, ref angVel, 1f / turningSharpness, Mathf.Infinity, Time.fixedDeltaTime);
             return curRot;
         }

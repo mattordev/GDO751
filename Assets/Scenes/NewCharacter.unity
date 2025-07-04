@@ -531,6 +531,126 @@ PrefabInstance:
       propertyPath: motor
       value: 
       objectReference: {fileID: 1954088768}
+    - target: {fileID: 290040391, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040392, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040392, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: lerpThreshold
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040392, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040392, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040392, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040392, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040392, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040392, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: smoothingTransition
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 290040394, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
+      propertyPath: easing._curve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 8310240298544169433, guid: 86c0bee6c697aa14a83205dbe0df0519,
         type: 3}
       propertyPath: m_Name
@@ -601,8 +721,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1954088764}
   - component: {fileID: 1954088763}
-  - component: {fileID: 1954088767}
-  - component: {fileID: 1954088766}
   - component: {fileID: 1954088768}
   m_Layer: 0
   m_Name: Bird
@@ -648,58 +766,6 @@ Transform:
   - {fileID: 656783171}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1954088766
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954088762}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1954088767
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954088762}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1954088768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,7 +795,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5
+      time: 0.25
       value: 0.9999938
       inSlope: 0
       outSlope: 0
@@ -739,7 +805,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.1499939
+      value: 0.07728489
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -749,11 +815,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  baseTurningSpeed: 10
+  baseTurningSpeed: 1
   gravityScaler: 1
   drag: 0.5
   thrustPower: 1
   idleSpeed: 0.2
+  activeMotion: 0
   input: {fileID: 11400000, guid: 99de7239c262f2d42bbda78cd2c5751d, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

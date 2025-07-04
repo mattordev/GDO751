@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace AstralCandle{
     public class Body: BirdAnimProfile<BirdMaster>{
-        [SerializeField] float speedThreshold;
         [SerializeField] float speedTuneSmoothing = .1f;
         [SerializeField] AnimEaser easing;
         [SerializeField] MinMax<float> orientationThresholds = new(.5f, .9f);
@@ -25,7 +24,7 @@ namespace AstralCandle{
 
         public override void Run(BirdMaster master, float delta){
             curSpeed = Mathf.SmoothDamp(curSpeed, master.Motor.MoveVelocity, ref speedTuneVel, speedTuneSmoothing, Mathf.Infinity, delta);
-            float speedPercent = easing.Trim(curSpeed / speedThreshold);
+            float speedPercent = easing.Trim(curSpeed / master.Motor.Profile.maxSpeed);
 
             float orientation = master.DirectionToGround(orientationThresholds.min, orientationThresholds.max);
             float angle = 0;
@@ -40,7 +39,7 @@ namespace AstralCandle{
                     bounceTimer += delta * bounceFreq;
                     Vector3 bobbing = new Vector2(0, Mathf.Sin(bounceTimer) / bounceAmp);
                     bobbing = Vector3.Lerp(Vector3.zero, bobbing, 1 - speedPercent);
-                    if(orientation >= stopFlappingThreshold){ orientation = 1; }
+                    if(orientation >= stopFlappingThreshold || (!master.Motor.activeMotion && master.Motor.GetPercentSpeed() > 0.1f)){ orientation = 1; }
 
                     position = Vector3.Lerp(bobbing, Vector3.zero, orientation);
                     break;
