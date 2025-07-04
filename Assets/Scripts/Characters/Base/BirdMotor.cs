@@ -9,15 +9,16 @@ using UnityEngine;
 
 namespace AstralCandle.Character{
     public abstract class BirdMotor : Steering3D, ISpeed{
-        [SerializeField, Tooltip("OPTIONAL! - For spherical worlds")] Transform ground;
         [SerializeField, Tooltip("Between 0-Maxspeed, controls when we are prime at steering")] protected AnimationCurve turningSensitivity;
         [SerializeField, Tooltip("Speed of turning")] protected float baseTurningSpeed;
         [SerializeField, Tooltip("How strong is gravity against bird")] float gravityScaler = 12f;
         [SerializeField, Tooltip("Resistance against bird")] float drag = 1;
         [SerializeField, Tooltip("How much force to we apply to the bird when actively moving")] float thrustPower = 1;
         [SerializeField, Range(0, 1), Tooltip("% speed until we start facing upright")] float idleSpeed;
-        float GravityAffector => Vector3.Dot(transform.forward, ground != null ? (ground.position - transform.position).normalized : Vector3.down);
+
+        public float GravityAffector => Vector3.Dot(transform.forward, Vector3.down);
         protected float velocity;
+        public float MoveVelocity => velocity;
         
         protected override void ProcessFixedUpdate(){
             // Motion calculation
