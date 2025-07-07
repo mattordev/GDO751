@@ -54,8 +54,8 @@ namespace AstralCandle.Input{
         private void GetMouse(bool usingGamepad, Vector2 value) => mouseVelocity = value * Time.deltaTime;
 
 
-        void Awake(){
-            CreateSingleton();
+        protected override void Awake(){
+            base.Awake();
             data.Init(transform, zoomAmount);
         }
 

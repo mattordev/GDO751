@@ -36,20 +36,19 @@ namespace AstralCandle.Character{
             velocity = Mathf.Clamp(velocity, 0, Profile.maxSpeed);
 
             // Rotation calculation
-            Quaternion desired = GetDesiredRotation();
-            Quaternion flat = Quaternion.LookRotation(new(transform.forward.x, 0, transform.forward.z));
-            Quaternion final = Quaternion.Slerp(flat, desired, Mathf.Clamp01(GetPercentSpeed() / idleSpeed));
-
+            Vector3 lookDir = new(transform.forward.x, 0, transform.forward.z);
+            Quaternion desired = GetDesiredRotation(lookDir);
+            Quaternion flatLook = Quaternion.LookRotation(lookDir);
+            Quaternion final = Quaternion.Slerp(flatLook, desired, Mathf.Clamp01(GetPercentSpeed() / idleSpeed));
 
             // Application
-            transform.rotation = final;
-            transform.position += transform.forward * velocity;
+            transform.SetPositionAndRotation(transform.position + transform.forward * velocity, final);
         }
 
         /// <summary>
         /// Returns the rotation we want the bird facing
         /// </summary>
-        protected abstract Quaternion GetDesiredRotation();
+        protected abstract Quaternion GetDesiredRotation(Vector3 lookDir);
 
         public float GetPercentSpeed() => velocity / Profile.maxSpeed;
     }

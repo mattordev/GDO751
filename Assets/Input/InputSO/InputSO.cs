@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace AstralCandle.Input{
 
@@ -49,8 +50,9 @@ namespace AstralCandle.Input{
         public void Clone() => Instantiate(this);
 
         void Run(InputAction.CallbackContext ctx){
+            bool isMainMenu = SceneManager.GetActiveScene().name == "MainMenu";
             UsingGamepad = Gamepad.current?.wasUpdatedThisFrame == true;        
-            Cursor.visible = !(UsingGamepad || forceHideCursor);
+            Cursor.visible = !(UsingGamepad || forceHideCursor) || isMainMenu;
             Cursor.lockState = Cursor.visible? CursorLockMode.None : CursorLockMode.Locked;
             ActionManager(ctx);
         }

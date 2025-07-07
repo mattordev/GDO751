@@ -28,7 +28,6 @@ namespace AstralCore.SceneManagement{
                 return _transitions;
             }
         }
-        void Awake() => CreateSingleton(false);
 
         /// <summary>
         /// Loads the scene with a transition

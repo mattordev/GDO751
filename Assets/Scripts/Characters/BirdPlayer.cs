@@ -12,15 +12,23 @@ using UnityEngine;
 namespace AstralCandle.Character{
     public class BirdPlayer : BirdMotor{
         [SerializeField] UserInput input;
+        [SerializeField, Range(0, 360)] float maxBankAngle = 180f;
 
         Quaternion curRot, angVel;
 
         Transform _cam;
         Transform Camera => _cam ??= UnityEngine.Camera.main.transform;
 
-        protected override Quaternion GetDesiredRotation(){
+        protected override Quaternion GetDesiredRotation(Vector3 lookDir){
+            Vector3 currentCameraDirection = new(Camera.forward.x, 0, Camera.forward.z);
+            float directionCompare = Vector3.Cross(currentCameraDirection, lookDir).y;
+
+            float trgtRoll = Mathf.Lerp(0, maxBankAngle, GetPercentSpeed()) * directionCompare;
+            
+            
+            Quaternion desiredLook = Quaternion.Euler(Camera.eulerAngles.x, Camera.eulerAngles.y, trgtRoll);
+            
             float turningSharpness = baseTurningSpeed * turningSensitivity.Evaluate(GetPercentSpeed());
-            Quaternion desiredLook = Quaternion.Euler(Camera.eulerAngles.x, Camera.eulerAngles.y, 0);
             curRot.SmoothDamp(desiredLook, ref angVel, 1f / turningSharpness, Mathf.Infinity, Time.fixedDeltaTime);
             return curRot;
         }

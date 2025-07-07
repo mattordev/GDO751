@@ -98,9 +98,12 @@ namespace AstralCore.QOL{
             Init();
             Debug.Log("Successfully reset user settings!");
         }
-        
 
 
-        void Awake() => CreateSingleton(false, false, new Action(Init));
+
+        protected override void Awake(){
+            base.Awake();
+            Init();
+        }
     }
 }
