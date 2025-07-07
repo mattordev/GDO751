@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using AstralCore.Utils;
-using UnityEngine;
 
 /// <summary>
 /// ©️2025 Designed and Programmed by Joshua Thompson. All rights reserved
@@ -16,7 +12,6 @@ namespace AstralCore.SFX{
         public Music music;
 
 
-        void Awake() => CreateSingleton(false);
         void Update() => music.Process();
 
 
