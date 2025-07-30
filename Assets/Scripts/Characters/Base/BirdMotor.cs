@@ -82,7 +82,7 @@ namespace AstralCandle.Character{
             Color c = colourMultiplier[Random.Range(0, colourMultiplier.Length)];
             foreach (Renderer r in ren){
                 r.GetPropertyBlock(blk);
-                blk.SetColor("_BaseColor", c);
+                blk.SetColor("_Color", c);
                 r.SetPropertyBlock(blk);
             }
         }
