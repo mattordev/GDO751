@@ -73,7 +73,14 @@ namespace AstralCore.AI.SteeringSystem{
         }
 
         // ---
-        static Vector3 Average(ISteer[] agents, Func<ISteer, Vector3> callback) => agents.Aggregate(Vector3.zero, (acc, agent) => acc + callback.Invoke(agent)) / agents.Length;
+        static Vector3 Average(ISteer[] agents, Func<ISteer, Vector3> callback) => agents.Aggregate(Vector3.zero, (acc, agent) => {
+            try{
+                return acc += callback.Invoke(agent) / agents.Length;
+            }
+            catch (Exception){
+                return acc;
+            }
+        });
         public static Vector3 Alignment(ISteer[] agents) => Average(agents, (a) => a.Velocity);
         public static Vector3 Cohesion(ISteer[] agents, ISteer agent) => (Average(agents, (a) => a.Profile.Position) - agent.Profile.Position).normalized;
         

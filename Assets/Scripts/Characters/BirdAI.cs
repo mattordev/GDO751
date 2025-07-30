@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using AstralCandle.Input;
@@ -10,7 +11,8 @@ using UnityEngine;
 /// </summary>
 
 namespace AstralCandle.Character{
-    public class BirdAI : BirdMotor{
+    public class BirdAI : BirdMotor
+    {
         [SerializeField] bool showDebug = false;
         [SerializeField, Range(0, 360)] float maxBankAngle = 180f;
         [SerializeField] LayerMask obstacles;
@@ -23,6 +25,9 @@ namespace AstralCandle.Character{
         readonly Directions directions = Directions.XYZ;
 
         [HideInInspector] public BirdMotor[] agents;
+
+        [HideInInspector] public int flockId;
+        public Action<int> replen; // set by flockManager. Allows for birds to replenish itself on death 
         protected override Quaternion GetDesiredRotation(Vector3 lookDir)
         {
             Vector3 steeringDir = Velocity.normalized;
@@ -43,19 +48,25 @@ namespace AstralCandle.Character{
             return curRot;
         }
 
-        
+
 
         protected override Vector3[] GetForces()
         {
+            Vector3 evade = default;
+            if (BirdPlayer.Instance){
+                evade = SteeringFuncs.Evade(BirdPlayer.Instance, this, playerEvadeDistance) * .25f;
+            }
             return new Vector3[] {
                 SteeringFuncs.Avoid(this, SteeringFuncs.Seek(targetPosition, this).normalized, obstacleRadius, obstacles, directions, dangerWeight, showDebug) * .75f,
                 SteeringFuncs.Cohesion(agents, this) * .05f,
                 SteeringFuncs.Separation(agents, flockSeparationDistance, this) * .5f,
                 SteeringFuncs.Wander(90, 3f, 4f, this) * .05f,
-                SteeringFuncs.Evade(BirdPlayer.Instance, this, playerEvadeDistance) * .25f
+                evade
             };
         }
 
         protected override void InitOnStart() { }
+
+        void OnDestroy() => replen?.Invoke(flockId);
     }
 }

@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
-
+#if UNITY_EDITOR
 /// <author>
 /// ©️2025 Designed and Programmed by Matthew Roberts. All rights reserved.
 /// </author>
@@ -45,7 +45,7 @@ namespace mattordev.util
         [MenuItem("Tools/PlayerPrefs Tool/Export PlayerPrefs to File")]
         public static bool ExportPlayerPrefsToJson()
         {
-#if UNITY_EDITOR_WIN
+
             string filePath = "C:/Users/" + System.Environment.UserName + "/Desktop/PlayerPrefsExport.json";
             string companyName = Application.companyName;
             string productName = Application.productName;
@@ -139,10 +139,6 @@ namespace mattordev.util
                 UnityEngine.Debug.LogError($"Failed to export PlayerPrefs: {ex.Message}");
                 return false;
             }
-#else
-        UnityEngine.Debug.LogWarning("This export method is Windows Editor-only.");
-        return false;
-#endif
         }
 
         private static byte[] HexStringToBytes(string hex)
@@ -168,3 +164,4 @@ namespace mattordev.util
         }
     }
 }
+#endif

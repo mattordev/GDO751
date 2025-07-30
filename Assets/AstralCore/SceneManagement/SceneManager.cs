@@ -44,6 +44,11 @@ namespace AstralCore.SceneManagement{
             StartCoroutine(LoadSceneAsync(sceneName, s));
         }
 
+        /// <summary>
+        /// Reloads current scene
+        /// </summary>
+        public void ReloadScene() => LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "crossfade");
+
 
         IEnumerator LoadSceneAsync(string sceneName, SceneTransition transition) {
             LoadingScene = true;

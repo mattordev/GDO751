@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using AstralCandle.Input;
 using AstralCore.AI.SteeringSystem;
+using AstralCore.Utils;
 using UnityEngine;
 
 /// <summary>
@@ -18,6 +19,7 @@ namespace AstralCandle.Character{
         [SerializeField, Range(0, 1), Tooltip("% speed until we start facing upright")] float idleSpeed;
         [SerializeField] float minSpeed;
         [SerializeField] Color[] colourMultiplier;
+        [SerializeField] AnimEaser easing;
 
         public float GravityAffector => Vector3.Dot(transform.forward, Vector3.down);
         protected float velocity;
@@ -26,16 +28,25 @@ namespace AstralCandle.Character{
         /// If true, then thrust is being applied
         /// </summary>
         public bool activeMotion = false;
+
+        public bool DestroyBird{ get; set; }
+
+        Rigidbody _rb;
+        Rigidbody RB => _rb ??= GetComponent<Rigidbody>();
+
         
         protected override void ProcessFixedUpdate(){
-            if(InputSO.Pause){ return; }
+            if (InputSO.Pause){
+                RB.velocity = Vector3.zero;
+                return;
+            }
             // Motion calculation
             velocity += (gravityScaler * GravityAffector) * Time.fixedDeltaTime;
             velocity *= 1 - (drag * Time.fixedDeltaTime);
             Vector3 dir = transform.InverseTransformDirection(Velocity.normalized);
             if (dir.z > 0) { velocity += thrustPower * Time.fixedDeltaTime; }
             activeMotion = dir.z > 0;
-            
+
             velocity = Mathf.Clamp(velocity, minSpeed, Profile.maxSpeed);
 
             // Rotation calculation
@@ -45,7 +56,16 @@ namespace AstralCandle.Character{
             Quaternion final = Quaternion.Slerp(flatLook, desired, Mathf.Clamp01(GetPercentSpeed() / idleSpeed));
 
             // Application
-            transform.SetPositionAndRotation(transform.position + transform.forward * velocity, final);
+            RB.velocity = 50 * velocity * transform.forward;
+            RB.MoveRotation(final);
+        }
+
+        void LateUpdate(){
+            easing.SetReverse(DestroyBird);
+            transform.localScale = Vector3.one * easing.Play();
+            if (DestroyBird && easing.Percent <= 0){
+                Destroy(gameObject);
+            }
         }
 
         /// <summary>

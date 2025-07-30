@@ -28,7 +28,6 @@ namespace mattordev.game.score
             if (Instance == null)
             {
                 Instance = this; // Set the singleton instance.
-                DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene load.
             }
             else
             {

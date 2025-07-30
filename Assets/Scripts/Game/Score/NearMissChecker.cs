@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 /// <author>
 /// ©️2025 Designed and Programmed by Matthew Roberts. All rights reserved.
@@ -9,12 +6,12 @@ using UnityEngine.SocialPlatforms.Impl;
 
 namespace mattordev.game.score
 {
-    public class NearMissChecker : MonoBehaviour
-    {
+    public class NearMissChecker : MonoBehaviour{
+        [SerializeField] float scoreMultiplier = 1;
         [SerializeField] private float nearMissDistance = 1.0f; // Distance threshold for a near miss.
-        [SerializeField] private float nearMissCooldown = 5.0f; // Cooldown time before a target can be detected again.
         [SerializeField] private LayerMask targetLayer; // Layer mask to specify which objects are targets for near misses.
-        private Collider[] hitColliders; // Array to store colliders that are within the near miss distance.
+        int touchedColliders; // Used to calculate how many points to give the player once they are no longer risk of hitting it
+        float timeNearColliders; // Timer to count how long we have been at risk at hitting something
 
         // Update is called once per frame
         void Update()
@@ -30,36 +27,20 @@ namespace mattordev.game.score
         void CheckForNearMisses()
         {
             // Get all colliders within the near miss distance.
-            hitColliders = Physics.OverlapSphere(transform.position, nearMissDistance, targetLayer);
+            int hitColliders = Physics.OverlapSphere(transform.position, nearMissDistance, targetLayer).Length;
+            int dif = Mathf.Max(touchedColliders - hitColliders, 0); // If num of hit colliders is less than touched. Then we have successfully evaded thus reward!
 
-            // Loop through each collider to check for near misses.
-            foreach (var hitCollider in hitColliders)
+
+            // Raise & Reset timer based on detected collisions
+            timeNearColliders = (touchedColliders > 0) ? timeNearColliders + Time.deltaTime : 0;
+
+            if (dif > 0 && timeNearColliders > 0)
             {
-                // Check if the collider is a target object using layer comparison.
-                // Assuming the target objects are tagged with "NearMissTarget".
-                if (hitCollider.gameObject.layer == LayerMask.NameToLayer("NearMissTarget"))
-                {
-                    // Log the near miss and update the score.
-
-                    Debug.Log("Near miss detected with: " + hitCollider.name);
-                    ScoreManager.Instance.AddScore(10); // Add score for the near miss.
-                    ScoreUI.Instance.FlashScoreUI(10, "Near Miss"); // Flash the score UI with the added score.
-                    // need to flash the score addition ui on screen.
-                }
-
-                // Change layer to prevent further detection.
-                hitCollider.gameObject.layer = LayerMask.NameToLayer("Default"); // Reset the layer to prevent further detection.
-                //change it back after a short delay.
-                StartCoroutine(ResetLayerAfterDelay(hitCollider.gameObject, nearMissCooldown));
+                int score = dif * Mathf.CeilToInt(timeNearColliders * scoreMultiplier);
+                ScoreManager.Instance.AddScore(score); // Add score for the near miss.
+                ScoreUI.Instance.FlashScoreUI(score, "Near Miss"); // Flash the score UI with the added score.
             }
-
-            IEnumerator ResetLayerAfterDelay(GameObject target, float delay)
-            {
-                yield return new WaitForSeconds(delay);
-                target.layer = LayerMask.NameToLayer("NearMissTarget"); // Reset the layer back to the target layer.
-                Debug.Log("Near miss cooldown complete for: " + target.name);
-            }
-
+            touchedColliders = hitColliders; // Update wih new colliders
         }
 
         void OnDrawGizmos()
@@ -70,3 +51,4 @@ namespace mattordev.game.score
         }
     }
 }
+

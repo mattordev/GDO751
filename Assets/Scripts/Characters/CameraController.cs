@@ -63,7 +63,7 @@ namespace AstralCandle.Input{
             data.bobTimer += Time.deltaTime;
 
             data.UpdateRotation(rotationSmoothing, Time.deltaTime);
-            (data.trgtPos, data.trgtRot) = Pivot();
+            (data.trgtPos, data.trgtRot) = (target.obj != null)? Pivot() : (data.trgtPos, data.trgtRot);
 
             Vector3 bob = Vector3.LerpUnclamped(
                 new(Mathf.Cos(data.bobTimer * bobFreq.min / 2) / bobAmp.min, Mathf.Sin(data.bobTimer * bobFreq.min) / bobAmp.min),
