@@ -16,7 +16,7 @@ namespace AstralCore.SceneManagement{
         public static event Action OnChangingScenes;
         [SerializeField] Transition[] transitions;
 
-        bool loadingScene = false;
+        public static bool LoadingScene { get; private set; } = false;
 
         Dictionary<string, SceneTransition> _transitions;
         Dictionary<string, SceneTransition> Transitions{
@@ -35,7 +35,7 @@ namespace AstralCore.SceneManagement{
         /// <param name="sceneName">The scene we want to load</param>
         /// <param name="transitionName">The transition we want to use</param>
         public void LoadScene(string sceneName, string transitionName = null) {
-            if(loadingScene){ return; }
+            if(LoadingScene){ return; }
 
             if (!Instance.Transitions.TryGetValue(transitionName, out SceneTransition s)){
                 Debug.LogWarning($"WARNING: Unable to transition to \"{sceneName}\". Transition: \"{transitionName}\" not found. Check names! (Case sensitive)");
@@ -46,14 +46,14 @@ namespace AstralCore.SceneManagement{
 
 
         IEnumerator LoadSceneAsync(string sceneName, SceneTransition transition) {
-            loadingScene = true;
+            LoadingScene = true;
             AsyncOperation scene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
             scene.allowSceneActivation = false;
             yield return transition?.In();
             do { transition?.WhileLoading(scene.progress); } // Callback
             while (scene.progress < .9f);
             scene.allowSceneActivation = true;
-            loadingScene = false;
+            LoadingScene = false;
             yield return transition?.Out();
         }
 

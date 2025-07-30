@@ -91,7 +91,7 @@ namespace AstralCore.AI{
             /// <summary>
             /// Creates an axis for only the X/Z axis
             /// </summary>
-            public static Axis XZ => new(true, true, true);
+            public static Axis XZ => new(true, false, true);
         }
         
     }

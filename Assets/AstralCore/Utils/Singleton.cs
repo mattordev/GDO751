@@ -38,7 +38,8 @@ namespace AstralCore.Utils{
         /// <returns>Was successful?</returns>
         public bool CreateSingleton(bool force = false, Action callback = null){
             if (_instance == null || force){
-                Destroy(_instance?.gameObject); // Remove old
+                if (_instance){ Destroy(_instance.gameObject); } // Remove old
+
                 _instance = this as T;
                 callback?.Invoke();
                 if (!persistanceAcrossScenes) { return true; }

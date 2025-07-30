@@ -22,7 +22,7 @@ namespace AstralCore.AI{
             int minXYZ = Mathf.Min(x, Mathf.Min(y, z));
             int midXYZ = Mathf.Max(Mathf.Min(x, y), Mathf.Min(Mathf.Max(x, y), z));
 
-            return minXYZ + DIAGONAL_COST * (midXYZ - minXYZ) + STRAIGHT * (x + y + z - midXYZ);
+            return VERTICAL_COST * minXYZ + DIAGONAL_COST * (midXYZ - minXYZ) + STRAIGHT * (x + y + z - midXYZ);
         }
 
         protected override bool IsObstacle(Vector3Int position)

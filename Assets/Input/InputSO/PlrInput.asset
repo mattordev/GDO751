@@ -48,6 +48,17 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 1
+  - name: Pause
+    runOnPerform: 1
+    action:
+      m_Name: Pause
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 1964100a-a2f2-49ac-a983-2d2f6ffb33d3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
   mouseSensitivity: {x: 10, y: 10}
   controllerSensitivity: {x: 125, y: 125}
   invertY: 0

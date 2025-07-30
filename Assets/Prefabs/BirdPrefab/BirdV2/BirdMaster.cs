@@ -24,6 +24,7 @@ namespace AstralCandle.Bird{
 
         void LateUpdate()
         {
+            if(InputSO.Pause){ return; }
             for (int i = 0; i < profiles.Length; i++)
             {
                 profiles[i].Run(this, Time.deltaTime);

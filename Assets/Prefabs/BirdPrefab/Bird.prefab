@@ -11,7 +11,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2449473187969865653}
   - component: {fileID: 1809931117844317355}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Leg.l(Master)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3313562627503419777}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: upperwing.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4133506984196631259}
   - component: {fileID: 1967644845706365961}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2072423728167719256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FlyPos.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1167370568723585790}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: leg.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3031030575272962404}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5490325902048279626}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FlyPos.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3692334919654811888}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lowerwing.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3404801286705815930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: upperbody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 279366332378293633}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LWingPole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2150009971662573269}
   - component: {fileID: 8879100828702682256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5307875717767824850}
   - component: {fileID: 8317768474215712484}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BezierCurve.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 579327755022513067}
   - component: {fileID: 4267091125686813823}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tracking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6872993108521578821}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lowerwing.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -754,7 +754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4181440547991162872}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: leg.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 273907593732601021}
   - component: {fileID: 1488839719898911433}
   - component: {fileID: 2547682102760203477}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: birdCoded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ MonoBehaviour:
     max: 0.9
   stopFlappingThreshold: 0.35
   relaxedRotation: 0
-  flyingRotation: -125
+  flyingRotation: -45
   bounceFreq: 20
   bounceAmp: 5
 --- !u!114 &2547682102760203477
@@ -1061,7 +1061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8063429425223538262}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: upperwing.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1096,7 +1096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8533465347353841780}
   - component: {fileID: 4143373626999305903}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1200,7 +1200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7526780661166894607}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lowerwing.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1233,7 +1233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1266584368031326618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1269,7 +1269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8105966248194508006}
   - component: {fileID: 3099201016403816226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RWingTrgt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1328,7 +1328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7642646138483027940}
   - component: {fileID: 9215935148112463052}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1416,7 +1416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2713302594375765846}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: leg.r_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7076058690594106751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,7 +1483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7153030322045021240}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WingPositions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1520,7 +1520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5783254836096059585}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tailbottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1554,7 +1554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3682320291081918576}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tailtop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1588,7 +1588,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9132577817749462560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: leg.l_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1621,7 +1621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6735842862608538912}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1654,7 +1654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4028954947241182075}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lowerbody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1691,7 +1691,7 @@ GameObject:
   - component: {fileID: 151689392869336577}
   - component: {fileID: 5062753802682003310}
   - component: {fileID: 6887228583025747962}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1749,8 +1749,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profile:
     transform: {fileID: 151689392869336577}
-    maxSpeed: 5
+    maxSpeed: 0.25
     maxForce: 1
+    maxTurnAngle: 360
   turningSensitivity:
     serializedVersion: 2
     m_Curve:
@@ -1764,8 +1765,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.25
-      value: 0.9999938
+      time: 0.5
+      value: 0.13961913
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1774,7 +1775,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.07728489
+      value: 0.08965279
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1784,14 +1785,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  baseTurningSpeed: 1
-  gravityScaler: 1
+  baseTurningSpeed: 10
+  gravityScaler: 0.1
   drag: 0.5
-  thrustPower: 1
+  thrustPower: 0.25
   idleSpeed: 0.2
+  minSpeed: 0
+  colourMultiplier:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
+  - {r: 0.4627451, g: 0.4627451, b: 0.4627451, a: 1}
+  - {r: 0.9607843, g: 0.7058824, b: 0.7058824, a: 1}
+  - {r: 0.8901961, g: 0.7490196, b: 0.5176471, a: 1}
   activeMotion: 0
   input: {fileID: 11400000, guid: 99de7239c262f2d42bbda78cd2c5751d, type: 2}
-  maxBankAngle: 180
+  maxBankAngle: 85
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 1
+  obstacleRadius: 10
+  dangerWeight: 2
 --- !u!1 &6783264725235248277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,7 +1816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327978662919273155}
   - component: {fileID: 8657180647337824635}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1856,7 +1869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 875388486622622833}
   - component: {fileID: 8101875401998717948}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LWingTrgt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1915,7 +1928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3488847217836088867}
   - component: {fileID: 3004460049402074739}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2018,7 +2031,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 82203946453237252}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: upperneck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2052,7 +2065,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8030358696725399498}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RestPos.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2086,7 +2099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2557193002803649956}
   - component: {fileID: 2647979906630919785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Leg.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2174,7 +2187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7218785086204402766}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tailbottom_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2207,7 +2220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7751084142880427097}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RestPos.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2240,7 +2253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 935897527372117571}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lowerneck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2275,7 +2288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4790313991891767967}
   - component: {fileID: 8736452670555010212}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BezierCurve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2378,7 +2391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5488705768923890697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RWingPole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2411,7 +2424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3670426857101171434}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: lowerwing.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2489,7 +2502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
       propertyPath: flyingRotation
-      value: -125
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 290040393, guid: 86c0bee6c697aa14a83205dbe0df0519, type: 3}
       propertyPath: easing._duration

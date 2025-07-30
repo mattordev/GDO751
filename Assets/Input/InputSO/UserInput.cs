@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using AstralCore.SceneManagement;
+using AstralCore.Utils;
+using UnityEngine.SceneManagement;
 
 namespace AstralCandle.Input{
 
@@ -29,21 +32,30 @@ namespace AstralCandle.Input{
         public event Vector2Event OnLook;
         public delegate void FloatEvent(float value);
         public event FloatEvent OnZoom;
-        public Vector2 InputVelocity{ get; private set; }
+        
+        public delegate void BoolEvent(bool value);
+        public event BoolEvent OnPause;
+        public Vector2 InputVelocity { get; private set; }
         #endregion
 
         protected override void ActionManager(InputAction.CallbackContext ctx){
             string _name = ctx.action.name;
-            switch(_name){
+            switch (_name)
+            {
                 case "Move":
                     InputVelocity = ctx.ReadValue<Vector2>();
                     break;
                 case "Look":
                     OnLook?.Invoke(UsingGamepad, ctx.ReadValue<Vector2>());
-                    break;           
+                    break;
                 case "Zoom":
                     OnZoom?.Invoke(ctx.ReadValue<float>());
                     break;       
+                case "Pause":
+                    if(AstralCore.SceneManagement.SceneManager.LoadingScene || UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MainMenu"){ return; }
+                    Pause = !Pause;
+                    OnPause?.Invoke(Pause);
+                    break;  
             }
         }
     }

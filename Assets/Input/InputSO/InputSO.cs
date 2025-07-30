@@ -19,16 +19,23 @@ namespace AstralCandle.Input{
         /// </summary>
         public bool UsingGamepad{ get; private set; } = false;
 
-        public virtual void OnEnable() {
-            if(!asset){ return; }
-            
-            for(int i = 0; i < _actions.Length; i++){
+        /// <summary>
+        /// Should game pause?
+        /// </summary>
+        public static bool Pause = false;
+
+        public virtual void OnEnable()
+        {
+            if (!asset) { return; }
+
+            for (int i = 0; i < _actions.Length; i++)
+            {
                 Action a = _actions[i];
-                InputAction action = asset.FindAction(a.Name);    
-                if(action == null){ continue; }
-                
+                InputAction action = asset.FindAction(a.Name);
+                if (action == null) { continue; }
+
                 action.started += Run;
-                if(a.RunOnPerform){ action.performed += Run; }
+                if (a.RunOnPerform) { action.performed += Run; }
                 action.canceled += Run;
 
                 action.Enable();
@@ -52,8 +59,6 @@ namespace AstralCandle.Input{
         void Run(InputAction.CallbackContext ctx){
             bool isMainMenu = SceneManager.GetActiveScene().name == "MainMenu";
             UsingGamepad = Gamepad.current?.wasUpdatedThisFrame == true;        
-            Cursor.visible = !(UsingGamepad || forceHideCursor) || isMainMenu;
-            Cursor.lockState = Cursor.visible? CursorLockMode.None : CursorLockMode.Locked;
             ActionManager(ctx);
         }
         

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AstralCandle.Input;
 using AstralCore.SceneManagement;
 using AstralCore.Utils;
 using UnityEngine;
@@ -12,22 +13,50 @@ using UnityEngine;
 namespace AstralCandle.UI{
     public class Menu : MonoBehaviour {
         [SerializeField] UI[] ui;
+        [SerializeField] string defaultUI = "MainMenu";
+        [SerializeField] UserInput input;
 
-        void Awake() => ShowUI();
+        void Awake() => ShowUI(defaultUI);
+        
         void Update(){
             foreach (UI u in ui){ u.Scale(); }
         }
 
+        void OnEnable()
+        {
+            if(!input){ return; }
+            input.OnPause += Pause;                
+        }
+
+        void Oisable(){
+            if (!input) { return; }
+            input.OnPause -= Pause;
+        }
+
+        public void Pause(bool paused)
+        {
+            InputSO.Pause = paused;
+            ShowUI(paused ? "PauseMenu" : null);
+        }
 
 
-        public void ShowUI(string category = "MainMenu"){
-            foreach (UI u in ui){
-                if (u.Category.Equals(category)){
+
+        public void ShowUI(string category = "MainMenu")
+        {
+            bool found = false;
+            foreach (UI u in ui)
+            {
+                if (u.Category.Equals(category))
+                {
+                    found = true;
                     u.Hide(false);
                     continue;
                 }
                 u.Hide(true);
             }
+
+            Cursor.visible = found;
+            Cursor.lockState = found ? CursorLockMode.None : CursorLockMode.Locked;
         }
        
         

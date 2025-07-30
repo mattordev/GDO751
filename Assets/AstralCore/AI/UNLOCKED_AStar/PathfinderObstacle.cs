@@ -47,7 +47,6 @@ namespace AstralCore.AI{
         void Start()
         {
             (this as IChunkTrackable<PathfinderObstacle>).UpdateChunk(chunkManager.Chunks, Matrix.GetPosition());
-            Debug.Log(Chunk);
         }
 
 #if UNITY_EDITOR

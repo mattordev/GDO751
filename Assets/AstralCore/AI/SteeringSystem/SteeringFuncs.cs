@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using AstralCore.Utils;
 using UnityEngine;
 
 /// <summary>
@@ -74,7 +75,8 @@ namespace AstralCore.AI.SteeringSystem{
         // ---
         static Vector3 Average(ISteer[] agents, Func<ISteer, Vector3> callback) => agents.Aggregate(Vector3.zero, (acc, agent) => acc + callback.Invoke(agent)) / agents.Length;
         public static Vector3 Alignment(ISteer[] agents) => Average(agents, (a) => a.Velocity);
-        public static Vector3 Cohesion(ISteer[] agents) => Average(agents, (a) => a.Profile.Position);
+        public static Vector3 Cohesion(ISteer[] agents, ISteer agent) => (Average(agents, (a) => a.Profile.Position) - agent.Profile.Position).normalized;
+        
         public static Vector3 Separation(ISteer[] agents, float separationDistance, ISteer agent)
         {
             Vector3 direction = Average(agents, (a) =>
@@ -86,16 +88,57 @@ namespace AstralCore.AI.SteeringSystem{
             });
             return direction.normalized * agent.Profile.maxSpeed;
         }
+        
+        public static Vector3 Avoid(ISteer agent, Vector3 direction, float scanRadius, LayerMask obstacles, Directions directions, float dangerWeight = 0.8f, bool showDebug = false){
+            Vector3 result = Vector3.zero;
+
+            GameObject agtObj = (agent as MonoBehaviour).gameObject;
+            int originalLayer = agtObj.layer;
+            agtObj.layer = Physics.IgnoreRaycastLayer;
+
+            int count = 0;
+
+            foreach (Vector3 selectedDirection in directions){
+                float interest = Mathf.Max(0, Vector3.Dot(selectedDirection, direction));
+
+                float danger = 0f;
+                if (Physics.Raycast(agent.Profile.Position, selectedDirection, out RaycastHit hit, scanRadius, obstacles)){
+                    danger = Mathf.Exp(1f - (hit.distance / scanRadius)) - 1f;
+                }
+
+                float influence = interest - (danger * dangerWeight);
+                result += selectedDirection * influence;
+                count++;
+
+                if (showDebug){
+                    Color debugColor = Color.Lerp(Color.white, Color.red, danger);
+                    Debug.DrawRay(agent.Profile.Position, (selectedDirection * scanRadius) * influence, debugColor);
+                }
+            }
+
+            agtObj.layer = originalLayer;
+
+            if (count == 0 || result == Vector3.zero) return Vector3.zero;
+
+            result /= count;
+            return result.normalized * agent.Profile.maxSpeed;
+        }
 
         public static Vector3 Resolve(ISteer agent, params Vector3[] forces)
         {
             Vector3 totalForce = forces.Aggregate(Vector3.zero, (acc, f) => acc + f);
-            Vector3 clampedChange = Vector3.ClampMagnitude(totalForce - agent.Velocity, agent.Profile.maxForce);
-            Vector3 desiredVelocity = Vector3.ClampMagnitude(agent.Velocity + clampedChange, agent.Profile.maxSpeed);
+            Vector3 desiredDir = totalForce.normalized;
+            Vector3 currentDir = agent.Velocity.normalized;
+            float angle = Vector3.Angle(agent.Velocity.normalized, desiredDir);
 
-            // Need to potentially limit this function so that it limits the angle at which the agent can turn. Because if agent suddenly goes in reverse, the character would immediately rotate
-            
-            return agent.Velocity = desiredVelocity;
+            if(angle > agent.Profile.maxTurnAngle){
+                desiredDir = Vector3.Slerp(currentDir, desiredDir, agent.Profile.maxTurnAngle / angle);
+            }
+
+            Vector3 desiredVelocity = desiredDir * agent.Profile.maxSpeed;
+            Vector3 clampedChange = Vector3.ClampMagnitude(desiredVelocity - agent.Velocity, agent.Profile.maxForce);
+
+            return agent.Velocity = Vector3.ClampMagnitude(agent.Velocity + clampedChange, agent.Profile.maxSpeed);
         }
     }
 }

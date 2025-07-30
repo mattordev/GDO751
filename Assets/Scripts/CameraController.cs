@@ -34,7 +34,6 @@ namespace AstralCandle.Input{
             data.pitch -= mouseVelocity.y * input.LookSensitivity.y * (input.InvertY? -1: 1);
             data.pitch = Mathf.Clamp(data.pitch, clampedAngles.min, clampedAngles.max);
             Quaternion rot = Quaternion.Euler(data.pitch, data.yaw, 0);
-
             return (target.obj.position, rot);
         }
 
@@ -55,11 +54,12 @@ namespace AstralCandle.Input{
 
 
         protected override void Awake(){
-            base.Awake();
+            CreateSingleton(true);
             data.Init(transform, zoomAmount);
         }
 
         void LateUpdate() {
+            if(InputSO.Pause){ return; }
             data.bobTimer += Time.deltaTime;
 
             data.UpdateRotation(rotationSmoothing, Time.deltaTime);
@@ -78,6 +78,7 @@ namespace AstralCandle.Input{
         }
 
         void FixedUpdate(){
+            if(InputSO.Pause){ return; }
             if (target.obj == null) { return; }
             data.UpdatePosition(positionSmoothing, Time.fixedDeltaTime);
         }
