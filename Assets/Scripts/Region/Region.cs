@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
+/// <author>
+/// ©️2025 Designed and Programmed by Matthew Roberts. All rights reserved.
+/// </author>
 
 namespace mattordev.regions
 {
@@ -12,8 +11,8 @@ namespace mattordev.regions
     {
         public string regionName;
         public BoxCollider regionCollider; // region collider.
-
         public AudioClip regionTransitionSFX; // sound effect to play when entering this region.
+        public int scoreBoostWhenEntering = 0; // score boost when entering this region.
 
         public enum weatherType
         {

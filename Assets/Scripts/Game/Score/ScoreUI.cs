@@ -1,0 +1,150 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using AstralCore.Utils;
+using TMPro;
+
+// Todo:
+// 1. Add label control to scoreboosts. This will allow us to control the text that appears on the score pop-up. AKA "Near Miss", "New region discovered", etc.
+// 2. Add fade in and fade out animations to the score pop-up text.
+// 3. Add a sound effect to the score pop-up text using astralcore SFX system.
+
+/// <author>
+/// ©️2025 Designed and Programmed by Matthew Roberts. All rights reserved.
+/// </author>
+
+namespace mattordev.game.score
+{
+    public class ScoreUI : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text scorePopUp; // Text component for displaying score.
+        [SerializeField] private TMP_Text scoreLabel; // Text component for displaying where the score came from. E.g "Near miss!"
+
+        [SerializeField] private AnimEaser animEaser; // Animation easer for score pop-up animations.
+
+        // Intance of ScoreUI for singleton pattern.
+        public static ScoreUI Instance { get; private set; }
+
+        /// <summary>
+        /// Start is called on the frame when a script is enabled just before
+        /// any of the Update methods is called the first time.
+        /// </summary>
+        void Start()
+        {
+            if (Instance == null)
+            {
+                Instance = this; // Set the singleton instance.
+                DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene load.
+            }
+            else
+            {
+                Destroy(gameObject); // Destroy duplicate instances.
+                return;
+            }
+
+            if (scorePopUp == null)
+            {
+                Debug.LogWarning("Score Pop Up Text is not assigned!"); // Log a warning if the text component is not assigned.
+            }
+        }
+
+        /// <summary>
+        /// Flashes the score UI with a pop-up effect.
+        /// This method updates the score pop-up text with the given score using a coroutine to animate the text.
+        /// It uses the AnimEaser to control the timing and easing of the animation.
+        /// </summary>
+        /// <param name="score"></param>
+        /// The Score to flash on the UI. It will be displayed as "+{score}!".
+        /// <param name="score"></param>
+        public void FlashScoreUI(int score, string scoreType)
+        {
+            if (scorePopUp != null)
+            {
+                scoreLabel.text = $"{scoreType}!"; // Set the score label text to the type of score.
+                scorePopUp.text = $"+{score}!";
+                animEaser.Play(); // Start the easing animation
+
+                StartCoroutine(AnimateScoreUI()); // Run the coroutine to animate scale over time
+            }
+            else
+            {
+                Debug.LogWarning("Score Pop Up Text is not assigned!");
+            }
+        }
+
+        /// <summary>
+        /// Controls the animation of the score pop-up.
+        /// This coroutine scales the score pop-up text from zero to a larger size and then back to zero.
+        /// It uses the AnimEaser to control the timing and easing of the animation.
+        /// </summary>
+        /// <returns> Nothing </returns>
+        private IEnumerator AnimateScoreUI()
+        {
+            float duration = animEaser.Duration;
+            float timer = 0f;
+            // Start hidden and scaled to zero
+            scoreLabel.transform.localScale = Vector3.zero;
+            scorePopUp.transform.localScale = Vector3.zero;
+
+
+            while (timer < duration)
+            {
+                float value = animEaser.Play(); // Update animation
+                scorePopUp.transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one * 1.5f, value);
+                scoreLabel.transform.localScale = Vector3.LerpUnclamped(Vector3.zero, Vector3.one * 1.5f, value);
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            // Optional: snap back to zero (or one) if easing ends mid-animation
+            // scoreLabel.transform.localScale = Vector3.zero;
+            // scorePopUp.transform.localScale = Vector3.zero;
+            // animEaser.Trim(0f); // Reset the animation to the start
+
+            yield return StartCoroutine(FadeScoreUI()); // Start fading out the score UI after the animation completes            
+        }
+
+        /// <summary>
+        /// Animates the score UI with a fade-out effect.
+        /// This coroutine fades out the score pop-up text over a specified duration using the AnimEaser.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator FadeScoreUI()
+        {
+            float duration = animEaser.Duration;
+            float timer = 0f;
+
+            // Store original start colors (with full alpha)
+            Color startLabelColor = scoreLabel.color;
+            Color startPopupColor = scorePopUp.color;
+
+            // Create faded target colors
+            Color fadedLabelColor = new Color(startLabelColor.r, startLabelColor.g, startLabelColor.b, 0f);
+            Color fadedPopupColor = new Color(startPopupColor.r, startPopupColor.g, startPopupColor.b, 0f);
+
+            while (timer < duration)
+            {
+                float value = animEaser.TrimInSeconds(timer); // Update animation
+                scoreLabel.color = Color.Lerp(startLabelColor, fadedLabelColor, value);
+                scorePopUp.color = Color.Lerp(startPopupColor, fadedPopupColor, value);
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            // Reset text
+            scorePopUp.text = "";
+            scoreLabel.text = "";
+
+            // Reset color alphas back to fully visible for next time
+            scoreLabel.color = startLabelColor;
+            scorePopUp.color = startPopupColor;
+
+            // Reset animation to start
+            animEaser.Trim(0f);
+        }
+
+
+    }
+}
