@@ -652,7 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   regionName: Worlds End
   regionCollider: {fileID: 0}
-  regionTransitionSFX: {fileID: 0}
+  regionTransitionSFX: {fileID: 8300000, guid: cd7d068bc52ebfe4b9a614ec517bd8fe, type: 3}
   scoreBoostWhenEntering: 100
   currentWeatherType: 0
 --- !u!54 &128842450
