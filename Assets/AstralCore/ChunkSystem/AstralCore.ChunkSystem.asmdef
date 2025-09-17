@@ -1,0 +1,16 @@
+{
+    "name": "AstralCore.ChunkSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4e437d452f260fb4c94e9d1ded75eba8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
